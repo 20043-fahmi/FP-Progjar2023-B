@@ -1,36 +1,22 @@
 import tkinter as tk
-from feature import chat
-
-class Page(tk.Frame):
-    def __init__(self, *args, **kwargs):
-        tk.Frame.__init__(self, *args, **kwargs)
-    def show(self):
-        self.lift()
-
-class ExamplePage(Page):
-   def __init__(self, *args, **kwargs):
-       Page.__init__(self, *args, **kwargs)
-       label = tk.Label(self, text="This is page 1")
-       label.pack(side="top", fill="both", expand=True)
+import socket
+import threading
+from feature.chat import ChatPage
+from feature.game import Game
 
 
-class MainView(tk.Frame):
-    def __init__(self, *args, **kwargs):
-        tk.Frame.__init__(self, *args, **kwargs)
-        ex = ExamplePage(self)
+class MainWindow(tk.Tk):
+    def __init__(self):
+        tk.Tk.__init__(self)
+        self.title("Main Window")
 
-        buttonframe = tk.Frame(self)
-        container = tk.Frame(self)
-        buttonframe.pack(side="top", fill="x", expand=False)
-        container.pack(side="top", fill="both", expand=True)
+        self.game = Game(self)
+        self.chat = ChatPage(self)
 
-        ex.place(in_=container, x=0, y=0, relwidth=1, relheight=1)     
+        self.game.grid(row=0, column=0, padx = 20, pady = 20)
+        self.chat.grid(row=0, column=1, padx = 20, pady = 20)
 
-        ex.show()
 
 if __name__ == "__main__":
-    root = tk.Tk()
-    main = MainView(root)
-    main.pack(side="top", fill="both", expand=True)
-    root.wm_geometry("1000x800")
-    root.mainloop()
+    main_window = MainWindow()
+    main_window.mainloop()
