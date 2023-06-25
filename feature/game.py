@@ -77,6 +77,9 @@ class Game(tk.Frame):
         self.GUI_maker()
         self.start_game()
 
+        self.high_score = 0
+        self.current_score = 0
+
         self.master.bind("<Left>", self.left)
         self.master.bind("<Right>", self.right)
         self.master.bind("<Up>", self.up)
@@ -103,6 +106,7 @@ class Game(tk.Frame):
                 row.append(cell_data)
             self.cells.append(row)
 
+        """
         frame_score = tk.Frame(self)
         frame_score.place(relx=0.5, y=60, anchor="center")
         tk.Label(
@@ -114,6 +118,31 @@ class Game(tk.Frame):
         self.label_score = tk.Label(
             frame_score, text="0", font=Game.Font_ScoreLabel)
         self.label_score.grid(row=1)
+        """
+
+        frame_high_score = tk.Frame(self)
+        frame_high_score.place(relx=0.5, y=10, anchor="center")
+        tk.Label(
+            frame_high_score,
+            text="High Score",
+            font=Game.Font_ScoreLabel,
+            bg=Game.Color_Score
+        ).grid(row=0)
+        self.label_high_score = tk.Label(
+            frame_high_score, text="0", font=Game.Font_ScoreLabel)
+        self.label_high_score.grid(row=1)
+
+        frame_current_score = tk.Frame(self)
+        frame_current_score.place(relx=0.5, y=90, anchor="center")
+        tk.Label(
+            frame_current_score,
+            text="Current Score",
+            font=Game.Font_ScoreLabel,
+            bg=Game.Color_Score
+        ).grid(row=0)
+        self.label_current_score = tk.Label(
+            frame_current_score, text="0", font=Game.Font_ScoreLabel)
+        self.label_current_score.grid(row=1)
 
         frame_buttons = tk.Frame(self)
         frame_buttons.place(relx=0.8, y=40, anchor="center")
@@ -150,10 +179,11 @@ class Game(tk.Frame):
             text="2"
         )
 
-        self.score = 0
+        self.current_score = 0
 
     def restart_game(self):
         self.start_game()
+        self.label_current_score.configure(text="0")
         self.GUI_update()
 
     def stack(self):
@@ -169,10 +199,11 @@ class Game(tk.Frame):
     def combine(self):
         for i in range(4):
             for j in range(3):
-                if self.matrix[i][j] != 0 and self.matrix[i][j] == self .matrix[i][j + 1]:
+                if self.matrix[i][j] != 0 and self.matrix[i][j] == self.matrix[i][j + 1]:
                     self.matrix[i][j] *= 2
                     self.matrix[i][j + 1] = 0
                     self.score += self.matrix[i][j]
+                    self.current_score = self.score
 
     def reverse(self):
         Matrix_1 = []
@@ -215,7 +246,10 @@ class Game(tk.Frame):
                         font=Game.Fonts_CellNumebr[cell_value],
                         text=str(cell_value)
                     )
-        self.label_score.configure(text=self.score)
+        if self.current_score > self.high_score:
+            self.high_score = self.current_score
+        self.label_high_score.configure(text=str(self.high_score))
+        self.label_current_score.configure(text=str(self.current_score))
         self.update_idletasks()
 
     def left(self, event):
