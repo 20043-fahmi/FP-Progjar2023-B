@@ -121,7 +121,7 @@ class Game(tk.Frame):
         """
 
         frame_high_score = tk.Frame(self)
-        frame_high_score.place(relx=0.5, y=10, anchor="center")
+        frame_high_score.place(relx=0.2, y=60, anchor="center")
         tk.Label(
             frame_high_score,
             text="High Score",
@@ -133,7 +133,7 @@ class Game(tk.Frame):
         self.label_high_score.grid(row=1)
 
         frame_current_score = tk.Frame(self)
-        frame_current_score.place(relx=0.5, y=90, anchor="center")
+        frame_current_score.place(relx=0.6, y=60, anchor="center")
         tk.Label(
             frame_current_score,
             text="Current Score",
@@ -145,7 +145,7 @@ class Game(tk.Frame):
         self.label_current_score.grid(row=1)
 
         frame_buttons = tk.Frame(self)
-        frame_buttons.place(relx=0.8, y=40, anchor="center")
+        frame_buttons.place(relx=0.9, y=40, anchor="center")
         restart_button = tk.Button(
             frame_buttons,
             text="Restart",
@@ -202,8 +202,8 @@ class Game(tk.Frame):
                 if self.matrix[i][j] != 0 and self.matrix[i][j] == self.matrix[i][j + 1]:
                     self.matrix[i][j] *= 2
                     self.matrix[i][j + 1] = 0
-                    self.score += self.matrix[i][j]
-                    self.current_score = self.score
+                    self.current_score += self.matrix[i][j]
+                    # self.current_score = self.score
 
     def reverse(self):
         Matrix_1 = []
