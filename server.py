@@ -10,6 +10,10 @@ def handle_client(client_socket, address):
         print(f"Received message from {address}: {message}")
         # Kirim pesan kepada client yang lain
         send_to_other_clients(message, client_socket)
+
+    # Jika keluar dari perulangan, tutup socket klien
+    print(f"Client disconnected: {address}")
+    client_sockets.remove(client_socket)
     client_socket.close()
 
 
