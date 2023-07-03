@@ -9,7 +9,7 @@ def send_highscore_email(highscore, username, email):
     # Replace with your email address
     message["From"] = "fahmi.muhazir.12@gmail.com"
     message["To"] = email
-    print(email)
+    print("send to }"+email)
 
     body = f"Hello {username},\n\nCongratulations on achieving a new high score of {highscore} in the game!\n\nKeep up the good work!\n\nBest regards,\nYour Game Team"
     message.set_content(body)
