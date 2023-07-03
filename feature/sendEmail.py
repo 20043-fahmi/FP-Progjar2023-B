@@ -33,13 +33,3 @@ def send_congratulations_email(email, username, score):
         print('Email berhasil dikirim!')
     except smtplib.SMTPException as e:
         print('Email gagal dikirim:', e)
-
-
-# Contoh penggunaan
-"""
-email = 'user@example.com'
-username = 'John Doe'
-score = 2048
-
-send_congratulations_email(email, username, score)
-"""

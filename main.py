@@ -48,7 +48,7 @@ class Dashboard(tk.Tk):
         self.submit_button.destroy()
 
         # Create game and chat components
-        self.game = Game(self)
+        self.game = Game(self, email, username)
         self.chat = ChatPage(self, self.client_socket)
 
         # Positioning game and chat components side by side

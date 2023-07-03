@@ -1,5 +1,6 @@
 import tkinter as tk
 import random
+from feature.sendEmail import send_congratulations_email
 # import fonts
 
 
@@ -63,11 +64,13 @@ class Game(tk.Frame):
         16384: ("Fredoka One", 25, "bold")
     }
 
-    def __init__(self, parent):
+    def __init__(self, parent, email, username):
         tk.Frame.__init__(self, parent)
         self.parent = parent
         self.grid()
         self.master.title("2048")
+        self.email = email
+        self.username = username
 
         self.grid_main = tk.Frame(
             self, bg=Game.Color_grid, bd=3, width=600, height=600
@@ -327,3 +330,6 @@ class Game(tk.Frame):
                 fg=Game.Font_Color_GameOver,
                 font=Game.Font_GameOver
             ).pack()
+            if self.current_score > self.high_score:
+                send_congratulations_email(
+                    self.current_score, self.username, self.email)
