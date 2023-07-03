@@ -1,35 +1,22 @@
 import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+from email.message import EmailMessage
 
 
-def send_congratulations_email(email, username, score):
-    # Konfigurasi SMTP server
-    smtp_server = 'smtp.example.com'
-    smtp_port = 587
-    smtp_username = 'your_username'
-    smtp_password = 'your_password'
+def send_highscore_email(highscore, username, email):
+    # Compose email message
+    message = EmailMessage()
+    message["Subject"] = "High Score Notification"
+    # Replace with your email address
+    message["From"] = "fahmi.muhazir.12@gmail.com"
+    message["To"] = email
+    print(email)
 
-    # Pembentukan email
-    sender_email = 'your_email@example.com'
-    receiver_email = email
-    subject = 'Selamat! Anda mencapai hightscore baru di permainan 2048!'
-    body = f'Halo {username},\n\nSelamat! Anda telah mencapai skor tertinggi di permainan 2048. Skor Anda adalah {score}.\n\nTerima kasih telah bermain!\n\nSalam,\nTim Permainan 2048'
+    body = f"Hello {username},\n\nCongratulations on achieving a new high score of {highscore} in the game!\n\nKeep up the good work!\n\nBest regards,\nYour Game Team"
+    message.set_content(body)
 
-    message = MIMEMultipart()
-    message['From'] = sender_email
-    message['To'] = receiver_email
-    message['Subject'] = subject
-
-    message.attach(MIMEText(body, 'plain'))
-
-    # Mengirim email
-    try:
-        with smtplib.SMTP(smtp_server, smtp_port) as server:
-            server.ehlo()
-            server.starttls()
-            server.login(smtp_username, smtp_password)
-            server.sendmail(sender_email, receiver_email, message.as_string())
-        print('Email berhasil dikirim!')
-    except smtplib.SMTPException as e:
-        print('Email gagal dikirim:', e)
+    # Send the email
+    with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+        smtp.starttls()
+        # Replace with your email credentials
+        smtp.login("fahmi.muhazir.12@gmail.com", "supbrpyzvddbpmxj")
+        smtp.send_message(message)
