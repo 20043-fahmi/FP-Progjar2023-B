@@ -9,8 +9,8 @@ class Game(tk.Frame):
     Color_grid = "#1b1e4d"
     Color_EmptyCell = "#edeef0"
     Color_Score = "#a9aab8"
-    Font_ScoreLabel = ("Fredoka One", 20, "bold")
-    Font_Score = ("Fredoka One", 36, "bold")
+    Font_ScoreLabel = ("Fredoka One", 10, "bold")
+    Font_Score = ("Fredoka One", 22, "bold")
     Font_GameOver = ("Fredoka One", 40, "bold")
     Font_Color_GameOver = "#ffffff"
     Winner_BG = "#001eff"
@@ -49,19 +49,19 @@ class Game(tk.Frame):
     }
 
     Fonts_CellNumebr = {
-        2: ("Fredoka One", 45, "bold"),
-        4: ("Fredoka One", 45, "bold"),
-        8: ("Fredoka One", 45, "bold"),
-        16: ("Fredoka One", 40, "bold"),
-        32: ("Fredoka One", 40, "bold"),
-        64: ("Fredoka One", 40, "bold"),
-        128: ("Fredoka One", 35, "bold"),
-        256: ("Fredoka One", 35, "bold"),
-        512: ("Fredoka One", 35, "bold"),
-        1024: ("Fredoka One", 30, "bold"),
-        2048: ("Fredoka One", 30, "bold"),
-        8192: ("Fredoka One", 30, "bold"),
-        16384: ("Fredoka One", 25, "bold")
+        2: ("Fredoka One", 30, "bold"),
+        4: ("Fredoka One", 30, "bold"),
+        8: ("Fredoka One", 30, "bold"),
+        16: ("Fredoka One", 25, "bold"),
+        32: ("Fredoka One", 25, "bold"),
+        64: ("Fredoka One", 25, "bold"),
+        128: ("Fredoka One", 20, "bold"),
+        256: ("Fredoka One", 20, "bold"),
+        512: ("Fredoka One", 20, "bold"),
+        1024: ("Fredoka One", 15, "bold"),
+        2048: ("Fredoka One", 15, "bold"),
+        8192: ("Fredoka One", 15, "bold"),
+        16384: ("Fredoka One", 10, "bold")
     }
 
     def __init__(self, parent, username, email):
@@ -71,7 +71,7 @@ class Game(tk.Frame):
         self.master.title("2048")
 
         self.grid_main = tk.Frame(
-            self, bg=Game.Color_grid, bd=3, width=600, height=600
+            self, bd=3, width=300, height=300, bg='#1B1E4D'
         )
         self.grid_main.grid(pady=(110, 0))
 
@@ -99,8 +99,8 @@ class Game(tk.Frame):
                 frame_cells = tk.Frame(
                     self.grid_main,
                     bg=Game.Color_EmptyCell,
-                    width=100,
-                    height=100
+                    width=60,
+                    height=60
                 )
                 frame_cells.grid(row=i, column=j, padx=5, pady=5)
                 cell_number = tk.Label(self.grid_main, bg=Game.Color_EmptyCell)
@@ -111,7 +111,7 @@ class Game(tk.Frame):
             self.cells.append(row)
 
         frame_high_score = tk.Frame(self)
-        frame_high_score.place(relx=0.2, y=60, anchor="center")
+        frame_high_score.place(relx=0.15, y=60, anchor="center")
         tk.Label(
             frame_high_score,
             text="High Score",
@@ -123,7 +123,7 @@ class Game(tk.Frame):
         self.label_high_score.grid(row=1)
 
         frame_current_score = tk.Frame(self)
-        frame_current_score.place(relx=0.6, y=60, anchor="center")
+        frame_current_score.place(relx=0.55, y=60, anchor="center")
         tk.Label(
             frame_current_score,
             text="Current Score",
@@ -135,7 +135,7 @@ class Game(tk.Frame):
         self.label_current_score.grid(row=1)
 
         frame_buttons = tk.Frame(self)
-        frame_buttons.place(relx=0.9, y=40, anchor="center")
+        frame_buttons.place(relx=0.9, y=50, anchor="center")
         restart_button = tk.Button(
             frame_buttons,
             text="Restart",
