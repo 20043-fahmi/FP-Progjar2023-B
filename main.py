@@ -28,6 +28,14 @@ class Dashboard(tk.Tk):
         self.username_label.pack(pady=10)
         self.username_entry.pack(pady=5)
         self.submit_button.pack(pady=10)
+        
+        # bg = tk.PhotoImage(file = "Your_img.png")
+
+        # canvas1 = tk.Canvas( tk(), width = 1280, height = 720)
+  
+        # canvas1.pack(fill = "both", expand = True)
+  
+        # canvas1.create_image( 0, 0, image = bg, anchor = "nw")
 
         # Socket initialization
         self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -74,5 +82,5 @@ class Dashboard(tk.Tk):
 
 if __name__ == "__main__":
     dashboard = Dashboard()
-    dashboard.geometry("400x300")  # Set the size of the dashboard window
+    dashboard.geometry("1280x720")  # Set the size of the dashboard window
     dashboard.mainloop()

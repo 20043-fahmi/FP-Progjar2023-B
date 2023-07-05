@@ -110,20 +110,6 @@ class Game(tk.Frame):
                 row.append(cell_data)
             self.cells.append(row)
 
-        """
-        frame_score = tk.Frame(self)
-        frame_score.place(relx=0.5, y=60, anchor="center")
-        tk.Label(
-            frame_score,
-            text="Skor",
-            font=Game.Font_ScoreLabel,
-            bg=Game.Color_Score
-        ).grid(row=0)
-        self.label_score = tk.Label(
-            frame_score, text="0", font=Game.Font_ScoreLabel)
-        self.label_score.grid(row=1)
-        """
-
         frame_high_score = tk.Frame(self)
         frame_high_score.place(relx=0.2, y=60, anchor="center")
         tk.Label(
@@ -321,7 +307,7 @@ class Game(tk.Frame):
                 fg=Game.Font_Color_GameOver,
                 font=Game.Font_GameOver
             ).pack()
-        elif not any(0 in row for row in self. matrix) and not self.Exists_horizontalMoves() and not self.Exists_verticalMoves():
+        elif not any(0 in row for row in self.matrix) and not self.Exists_horizontalMoves() and not self.Exists_verticalMoves():
             game_over_frame = tk.Frame(self.grid_main, borderwidth=2)
             game_over_frame.place(relx=0.5, rely=0.5, anchor="center")
             tk.Label(
