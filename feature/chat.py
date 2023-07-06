@@ -59,11 +59,11 @@ class ChatClient:
         self.client_socket.send(nickname.encode())
         return nickname
 
-    def receive_messages(self, chat_page):
+    def receive_messages(self, chat_page, nickname):
         while True:
             try:
                 message = self.client_socket.recv(1024).decode()
-                chat_page.display_message(message)
+                chat_page.display_message({self.nickname} + ": " + message)
             except:
                 print("Error receiving messages")
                 self.client_socket.close()
