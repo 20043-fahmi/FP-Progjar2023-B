@@ -12,7 +12,7 @@ class Dashboard(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         self.title("Dashboard")
-        self.img = Image.open("bg.png")
+        self.img = Image.open("img/bg.png")
         self.bglabel = ImageTk.PhotoImage(self.img)
         ttk.Label(self, image=self.bglabel).place(x=0, y=0, relheight=1, relwidth=1)
         # bg = PhotoImage(file = "bg.png")

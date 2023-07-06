@@ -21,7 +21,7 @@ def send_highscore_email(highscore, username, email):
     file_ss = 'ss.jpg'
     with open(file_ss, 'rb') as f:
         img_data = f.read()
-    text = MIMEText("Hello {username},\n\nCongratulations on achieving a new high score of {highscore} in the game!\n\nKeep up the good work!\n\nBest regards,\nYour Game Team")
+    text = MIMEText("Hello " + username + "!,\n\nCongratulations on achieving a new high score of " + str(highscore) + " in the game!\n\nKeep up the good work!\n\nBest regards,\nYour Game Team")
     message.attach(text)
     image = MIMEImage(img_data, name=os.path.basename(file_ss))
     message.attach(image)
