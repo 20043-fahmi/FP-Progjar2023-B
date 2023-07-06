@@ -13,11 +13,21 @@ Anggota Kelompok:<br>
 - Buka folder game melalui vs code
 - Buka terminal pada vscode
   
+  ![Terminal](https://github.com/20043-fahmi/FP-Progjar2023-B/assets/85062827/771e74d2-6c8d-4b54-8e48-e32ff08ec85b)
 - Buka direktori FP-Progjar2023-B dan ketik `python main.py`
+  
+  ![dir](https://github.com/20043-fahmi/FP-Progjar2023-B/assets/85062827/6bc500b0-4958-4c56-bf51-fef24204b698)
 - Maka akan muncul tampilan game seperti berikut
+  
+  ![ingame](https://github.com/20043-fahmi/FP-Progjar2023-B/assets/85062827/b9c75f32-dc1a-4139-aaf4-162117117726)
 
 # Penggunaan Game
 - Input username dan email pengguna setelah itu klik submit untuk masuk kedalam game
+  
+  ![login](https://github.com/20043-fahmi/FP-Progjar2023-B/assets/85062827/5fc6199b-967b-42e5-92e9-236cde219037)
 - Dalam Game: Gunakan tombol panah kiri kanan atas bawah untuk memindahkan ubin. Ubin dengan nomor yang sama bergabung menjadi satu saat ubin digeser.  Tambahkan nomor nomor tersebut hingga mencapai 2048 atau lebih.
-- Chat:
-Pemain dapat melakukan chat dengan sesama pemain dengan kolom chat yang tersedia
+  
+  ![2048](https://github.com/20043-fahmi/FP-Progjar2023-B/assets/85062827/d0dc284c-4264-4623-8f3e-6b2b29afd04f)
+- Chat: Pemain dapat melakukan chat dengan sesama pemain dengan kolom chat yang tersedia
+  
+  ![chat](https://github.com/20043-fahmi/FP-Progjar2023-B/assets/85062827/5800fbed-e368-40df-8ef1-c58f4866ebb3)
