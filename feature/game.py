@@ -223,7 +223,7 @@ class Game(tk.Frame):
             for j in range(3):
                 if self.matrix[i][j] == self.matrix[i][j + 1]:
                     return True
-                if self.matrix[i][j] == 0 and self.matrix[i][j+1] != 0:
+                if self.matrix[i][j] == 0:
                     return True
         return False
 
@@ -232,7 +232,7 @@ class Game(tk.Frame):
             for j in range(4):
                 if self.matrix[i][j] == self.matrix[i + 1][j]:
                     return True
-                if self.matrix[i][j] == 0 and self.matrix[i+1][j] != 0:
+                if self.matrix[i][j] == 0:
                     return True
         return False
 
