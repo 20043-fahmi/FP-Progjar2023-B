@@ -31,3 +31,11 @@ Anggota Kelompok:<br>
 - Chat: Pemain dapat melakukan chat dengan sesama pemain dengan kolom chat yang tersedia
   
   ![chat](https://github.com/20043-fahmi/FP-Progjar2023-B/assets/85062827/5800fbed-e368-40df-8ef1-c58f4866ebb3)
+- Highscore
+  
+  ![image](https://github.com/20043-fahmi/FP-Progjar2023-B/assets/94664966/33f717a2-cef0-4ea2-81aa-01875c413211)
+
+- Email Notification : Saat game berakhir dengan high score baru, akan dikirimkan email notifikasi secara otomatis (sesuai email saat login) berisi ucapan selamat telah mendapatkan high score baru dan mendapatkan screenshot kondisi game saat high score.
+  
+  ![image](https://github.com/20043-fahmi/FP-Progjar2023-B/assets/94664966/170d333a-512e-4f3e-a979-1dbed4023930)
+
