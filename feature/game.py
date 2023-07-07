@@ -218,6 +218,24 @@ class Game(tk.Frame):
             col = random.randint(0, 3)
         self.matrix[row][col] = random.choice([2, 4])
 
+    def Exists_horizontalMoves(self):
+        for i in range(4):
+            for j in range(3):
+                if self.matrix[i][j] == self.matrix[i][j + 1]:
+                    return True
+                if self.matrix[i][j] == 0 and self.matrix[i][j+1] != 0:
+                    return True
+        return False
+
+    def Exists_verticalMoves(self):
+        for i in range(3):
+            for j in range(4):
+                if self.matrix[i][j] == self.matrix[i + 1][j]:
+                    return True
+                if self.matrix[i][j] == 0 and self.matrix[i+1][j] != 0:
+                    return True
+        return False
+
     def GUI_update(self):
         for i in range(4):
             for j in range(4):
@@ -243,58 +261,48 @@ class Game(tk.Frame):
         self.update_idletasks()
 
     def left(self, event):
-        self.stack()
-        self.combine()
-        self.stack()
-        self.add_tile()
-        self.GUI_update()
-        self.game_over()
+        if self.Exists_horizontalMoves():
+            self.stack()
+            self.combine()
+            self.stack()
+            self.add_tile()
+            self.GUI_update()
+            self.game_over()
 
     def right(self, event):
-        self.reverse()
-        self.stack()
-        self.combine()
-        self.stack()
-        self.reverse()
-        self.add_tile()
-        self.GUI_update()
-        self.game_over()
+        if self.Exists_horizontalMoves():
+            self.reverse()
+            self.stack()
+            self.combine()
+            self.stack()
+            self.reverse()
+            self.add_tile()
+            self.GUI_update()
+            self.game_over()
 
     def up(self, event):
-        self.transpose()
-        self.stack()
-        self.combine()
-        self.stack()
-        self.transpose()
-        self.add_tile()
-        self.GUI_update()
-        self.game_over()
+        if self.Exists_verticalMoves():
+            self.transpose()
+            self.stack()
+            self.combine()
+            self.stack()
+            self.transpose()
+            self.add_tile()
+            self.GUI_update()
+            self.game_over()
 
     def down(self, event):
-        self.transpose()
-        self.reverse()
-        self.stack()
-        self.combine()
-        self.stack()
-        self.reverse()
-        self.transpose()
-        self.add_tile()
-        self.GUI_update()
-        self.game_over()
-
-    def Exists_horizontalMoves(self):
-        for i in range(4):
-            for j in range(3):
-                if self.matrix[i][j] == self.matrix[i][j + 1]:
-                    return True
-        return False
-
-    def Exists_verticalMoves(self):
-        for i in range(3):
-            for j in range(4):
-                if self.matrix[i][j] == self.matrix[i + 1][j]:
-                    return True
-        return False
+        if self.Exists_verticalMoves():
+            self.transpose()
+            self.reverse()
+            self.stack()
+            self.combine()
+            self.stack()
+            self.reverse()
+            self.transpose()
+            self.add_tile()
+            self.GUI_update()
+            self.game_over()
 
     def game_over(self):
         if any(16384 in row for row in self.matrix):
@@ -317,5 +325,6 @@ class Game(tk.Frame):
                 fg=Game.Font_Color_GameOver,
                 font=Game.Font_GameOver
             ).pack()
-
+        if self.current_score > self.high_score:
+            self.high_score = self.current_score
             send_highscore_email(self.high_score, self.username, self.email)
