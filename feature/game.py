@@ -315,6 +315,9 @@ class Game(tk.Frame):
                 fg=Game.Font_Color_GameOver,
                 font=Game.Font_GameOver
             ).pack()
+            game_over_frame.after(8000, game_over_frame.destroy)
+            if self.current_score == self.high_score:
+                send_highscore_email(self.high_score, self.username, self.email)
         elif not any(0 in row for row in self.matrix) and not self.Exists_horizontalMoves() and not self.Exists_verticalMoves():
             game_over_frame = tk.Frame(self.grid_main, borderwidth=2)
             game_over_frame.place(relx=0.5, rely=0.5, anchor="center")
@@ -325,6 +328,6 @@ class Game(tk.Frame):
                 fg=Game.Font_Color_GameOver,
                 font=Game.Font_GameOver
             ).pack()
-        if self.current_score > self.high_score:
-            self.high_score = self.current_score
-            send_highscore_email(self.high_score, self.username, self.email)
+            game_over_frame.after(8000, game_over_frame.destroy)
+            if self.current_score == self.high_score:
+                send_highscore_email(self.high_score, self.username, self.email)
